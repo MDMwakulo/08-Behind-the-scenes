@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 // Scoping in Practice
 function calcAge(birthYear) {
   const age = 2023 - birthYear;
@@ -38,8 +39,10 @@ const firstName = 'Durell';
 calcAge(1995);
 // console.log(age);
 // printAge();
+*/
 
-// Hoising and Temporal Dead Zone (TDZ) in Practice
+// Hoisting and Temporal Dead Zone (TDZ) in Practice
+/*
 // Variables
 console.log(me);
 // console.log(job);
@@ -83,3 +86,38 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+*/
+
+// The this Keyword in Practice
+// console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log(2023 - birthYear);
+  // console.log(this);
+};
+calcAge(1996);
+
+const calcAgeArrow = birthYear => {
+  console.log(2023 - birthYear);
+  // console.log(this);
+};
+calcAgeArrow(1980);
+
+const durell = {
+  year: 1997,
+  calcAge: function () {
+    console.log(this);
+    console.log(2023 - this.year);
+  },
+};
+durell.calcAge();
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = durell.calcAge;
+matilda.calcAge();
+
+const f = durell.calcAge;
+f();
